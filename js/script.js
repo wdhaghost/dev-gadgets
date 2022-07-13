@@ -1,5 +1,5 @@
 
-
+//gallery function mobile
 function managePicButton() {
     let i = 1
     document.querySelectorAll(".pictures-handler").forEach(btn => {
@@ -28,3 +28,13 @@ managePicButton()
 function changePic(a) {
     document.querySelector(".pictures-img").src = `img/canard-jaune-${a}-l.png`
 }
+
+//gallery function desktop
+function manageThumbs(){
+    document.querySelectorAll(".thumbs > .thumbs-itm").forEach(thumb=>{
+        thumb.addEventListener("mouseover",function(event){
+           changePic(this.dataset.id)
+        })
+    });
+}
+manageThumbs()
