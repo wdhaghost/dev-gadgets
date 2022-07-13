@@ -263,7 +263,9 @@ body {
 .add-cta:hover {
     background-color: var(--background-dark)
 }
-
+.add-cta.bought{
+    background-color: var(--background-dark);
+}
 /* PICTURES */
 
 .pictures {
