@@ -105,7 +105,7 @@ function getStorageAcrdState(id,acrd){
 //carousel function
 let count = 0
 let array=[]
-getSimilarArticle()
+getSimilarArticleId()
 
 //manage the btn of the similar article (hide/display)
 function manageSimilarBtn() {
@@ -137,10 +137,10 @@ function manageSimilarBtn() {
         })
     });
 }
-function getSimilarArticle() {
+//get the id of all the similar itm
+function getSimilarArticleId() {
     document.querySelectorAll(".similar-lst > .similar-itm").forEach(itm => {
         if (!array.includes(itm)) {
-
             array.push(itm.id);
         }
     });
