@@ -1,5 +1,6 @@
 
 //gallery function mobile
+//Event listener added on the btn 
 function managePicBtn() {
     let i = 1
     document.querySelectorAll(".pictures-handler").forEach(btn => {
@@ -25,11 +26,13 @@ function managePicBtn() {
 }
 managePicBtn()
 
+//Change the src of the displayed picture 
 function changePic(a) {
     document.querySelector(".pictures-img").src = `img/canard-jaune-${a}-l.png`
 }
 
 //gallery function desktop
+//The pic change when the mouse is hover the thums with an event listener
 function manageThumbs() {
     document.querySelectorAll(".thumbs > .thumbs-itm").forEach(thumb => {
         thumb.addEventListener("mouseover", function (event) {
@@ -45,11 +48,13 @@ function manageAddBtn() {
 }
 manageAddBtn()
 
+//get the value of the input and call a function to dislay it in the cart
 function getQty() {
     const qty = document.getElementById("add-qty")
     displayQty(qty.value)
 }
 
+//display the qty into the cart
 function displayQty(qty) {
     if (qty > 99) {
         document.getElementById("cart-nb").innerText = "99+"
@@ -58,7 +63,7 @@ function displayQty(qty) {
     }
     removeAddBtn()
 }
-
+//change the state of the add-to-cart button
 function removeAddBtn() {
     addBtn.innerText = "Déja au panier"
     addBtn.classList.add("bought")
@@ -66,25 +71,28 @@ function removeAddBtn() {
 
 }
 //accordeon function
+//   get the last state of the acordeonadd an event listener to acrd button and call a function for display 
 function manageAcrdBtn() {
     document.querySelectorAll(".product-acrd-lnk").forEach(acrd => {
+        getStorageAcrdState(`${acrd.dataset.id}`,acrd)
         acrd.addEventListener("click", function (event) {
             displayAcrdText(`${this.dataset.id}`);
             this.classList.toggle("closed")
         })
-        getStorageAcrdState(`${acrd.dataset.id}`,acrd)
     })
 }
 manageAcrdBtn()
 
+//it change the state of the acordeon(hide/display)
 function displayAcrdText(id){
     document.getElementById(id).classList.toggle("hide")
     setStorageAcrdState(id,document.getElementById(id).classList)
 }
-
+//it save the last state of the acordeon
 function setStorageAcrdState(id,state){
     localStorage.setItem(id,state)
 }
+//  get the last state of the acordeon in the local storage and applied it
 function getStorageAcrdState(id,acrd){
     const a= localStorage.getItem(`${acrd.dataset.id}`)
 
@@ -93,18 +101,24 @@ function getStorageAcrdState(id,acrd){
         acrd.classList.add("closed")
     }
 }
+
+//carousel function
 let count = 0
 let array=[]
 getSimilarArticle()
+
+//manage the btn of the similar article (hide/display)
 function manageSimilarBtn() {
     document.querySelectorAll(".similar-lnk-handler").forEach(btn => {
 
 
         btn.addEventListener("click", function (event) {
+        //the prev btn is hide in the first place
             if (this.classList.contains("similar-next")) {
                 count++
                 console.log(count,array.length-1);
                 if(count==array.length-1){
+                    //hide the next btn when we are at the last article
                     document.getElementById("similar-next").classList.add("hide")
                 }
                 document.getElementById("similar-prev").classList.remove("hide")
@@ -113,6 +127,7 @@ function manageSimilarBtn() {
             if (this.classList.contains("similar-prev")) {
                 count--
                 if(count==0){
+                    //hide the prev btn when we are at the last article
                     document.getElementById("similar-prev").classList.add("hide")
                 }
                 document.getElementById("similar-next").classList.remove("hide")
@@ -130,12 +145,15 @@ function getSimilarArticle() {
         }
     });
 }
-
+//display on itm at a time
 function displaySimilarItm(i) {
+    //hide all itm in the first place
     array.forEach(itm=>{
         document.getElementById(itm).classList.remove("active")  
     })
+    //only the active itm is display
     document.getElementById(array[i]).classList.add("active")
+    //overflow hidden is applied in the css code so this line will allow to scroll directly to the element and act like a carousel
     document.getElementById(array[i]).scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" })
 }
 
