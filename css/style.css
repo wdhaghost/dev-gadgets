@@ -347,9 +347,7 @@ body {
 .similar-itm{
     width: 100vw;
 }
-.similar-itm.active{
-    
-}
+
 .similar-lnk {
     position: relative;
     display: flex;

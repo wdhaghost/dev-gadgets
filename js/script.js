@@ -129,7 +129,7 @@ function getSimilarArticle() {
 }
 
 function changeSimilar(i) {
-    document.getElementById(array[i]).scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' })
+    document.getElementById(array[i]).scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" })
 }
-//getSimilarArticle()
+
 manageSimilarBtn()
