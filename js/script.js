@@ -30,11 +30,38 @@ function changePic(a) {
 }
 
 //gallery function desktop
-function manageThumbs(){
-    document.querySelectorAll(".thumbs > .thumbs-itm").forEach(thumb=>{
-        thumb.addEventListener("mouseover",function(event){
-           changePic(this.dataset.id)
+function manageThumbs() {
+    document.querySelectorAll(".thumbs > .thumbs-itm").forEach(thumb => {
+        thumb.addEventListener("mouseover", function (event) {
+            changePic(this.dataset.id)
         })
     });
 }
 manageThumbs()
+//Cart function
+const addBtn = document.getElementById("add-cta")
+function manageAddButton() {
+    addBtn.addEventListener("click", getQty)
+}
+manageAddButton()
+
+function getQty() {
+    const qty = document.getElementById("add-qty")
+    displayQty(qty.value)
+}
+
+function displayQty(qty) {
+    if (qty > 99) {
+        document.getElementById("cart-nb").innerText = "99+"
+    } else {
+        document.getElementById("cart-nb").innerText = qty
+    }
+    removeAddbutton()
+}
+
+function removeAddbutton() {
+    addBtn.innerText = "Déja au panier"
+    addBtn.classList.add("bought")
+    addBtn.removeEventListener("click", getQty)
+
+}
