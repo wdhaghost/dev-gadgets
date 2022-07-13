@@ -407,7 +407,9 @@ body {
     right: 1rem;
 }
 @media screen and (min-width: 768px) {
-
+    .similar-lnk-handler {
+        display: none;
+    }
     .similar-itm{
         width: auto;
         display: block;

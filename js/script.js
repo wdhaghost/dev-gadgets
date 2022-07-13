@@ -103,16 +103,19 @@ function manageSimilarBtn() {
         btn.addEventListener("click", function (event) {
             if (this.classList.contains("similar-next")) {
                 count++
-                if(count==array.length){
-                    count=0
+                console.log(count,array.length-1);
+                if(count==array.length-1){
+                    document.getElementById("similar-next").classList.add("hide")
                 }
+                document.getElementById("similar-prev").classList.remove("hide")
                 displaySimilarItm(count)
             }
             if (this.classList.contains("similar-prev")) {
                 count--
-                if(count<0){
-                    count=array.length-1
+                if(count==0){
+                    document.getElementById("similar-prev").classList.add("hide")
                 }
+                document.getElementById("similar-next").classList.remove("hide")
                 displaySimilarItm(count)
             }
             
