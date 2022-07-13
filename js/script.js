@@ -106,14 +106,14 @@ function manageSimilarBtn() {
                 if(count==array.length){
                     count=0
                 }
-                changeSimilar(count)
+                displaySimilarItm(count)
             }
             if (this.classList.contains("similar-prev")) {
                 count--
                 if(count<0){
                     count=array.length-1
                 }
-                changeSimilar(count)
+                displaySimilarItm(count)
             }
             
         })
@@ -128,7 +128,11 @@ function getSimilarArticle() {
     });
 }
 
-function changeSimilar(i) {
+function displaySimilarItm(i) {
+    array.forEach(itm=>{
+        document.getElementById(itm).classList.remove("active")  
+    })
+    document.getElementById(array[i]).classList.add("active")
     document.getElementById(array[i]).scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" })
 }
 

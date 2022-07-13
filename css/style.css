@@ -346,6 +346,10 @@ body {
 }
 .similar-itm{
     width: 100vw;
+    display: none;
+}
+.similar-itm.active{
+  display: block;
 }
 
 .similar-lnk {
@@ -403,8 +407,10 @@ body {
     right: 1rem;
 }
 @media screen and (min-width: 768px) {
+
     .similar-itm{
         width: auto;
+        display: block;
     }
     .similar-lnk:hover {
         background-color: #dddddd;
