@@ -346,11 +346,9 @@ body {
 }
 .similar-itm{
     width: 100vw;
-    display: none;
+    
 }
-.similar-itm.active{
-  display: block;
-}
+
 
 .similar-lnk {
     position: relative;

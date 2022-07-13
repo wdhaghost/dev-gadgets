@@ -146,12 +146,6 @@ function getSimilarArticleId() {
 }
 //display on itm at a time
 function displaySimilarItm(i) {
-    //hide all itm in the first place
-    array.forEach(itm=>{
-        document.getElementById(itm).classList.remove("active")  
-    })
-    //only the active itm is display
-    document.getElementById(array[i]).classList.add("active")
     //overflow hidden is applied in the css code so this line will allow to scroll directly to the element and act like a carousel
     document.getElementById(array[i]).scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" })
 }
