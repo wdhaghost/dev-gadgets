@@ -116,7 +116,6 @@ function manageSimilarBtn() {
         //the prev btn is hide in the first place
             if (this.classList.contains("similar-next")) {
                 count++
-                console.log(count,array.length-1);
                 if(count==array.length-1){
                     //hide the next btn when we are at the last article
                     document.getElementById("similar-next").classList.add("hide")
