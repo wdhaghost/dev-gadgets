@@ -333,6 +333,7 @@ body {
 /* SIMILAR */
 
 .similar {
+    position: relative;
     width: 100%;
     max-width: var(--container-width);
     margin: 0 auto;
@@ -341,6 +342,13 @@ body {
 .similar-lst {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    overflow: hidden;
+}
+.similar-itm{
+    width: 100vw;
+}
+.similar-itm.active{
+    
 }
 .similar-lnk {
     position: relative;
@@ -377,8 +385,29 @@ body {
     color: white;
     background-color: var(--primary-color);
 }
+.similar-lnk-handler {
+    position: absolute;
+    top: 50%;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4rem;
+    aspect-ratio: 1/1;
+    font-size: 3rem;
+    cursor: pointer;
+}
 
+.similar-prev {
+    left: 1rem;
+}
+.similar-next {
+    right: 1rem;
+}
 @media screen and (min-width: 768px) {
+    .similar-itm{
+        width: auto;
+    }
     .similar-lnk:hover {
         background-color: #dddddd;
     }
