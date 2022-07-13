@@ -1,6 +1,6 @@
 
 //gallery function mobile
-function managePicButton() {
+function managePicBtn() {
     let i = 1
     document.querySelectorAll(".pictures-handler").forEach(btn => {
 
@@ -23,7 +23,7 @@ function managePicButton() {
         })
     });
 }
-managePicButton()
+managePicBtn()
 
 function changePic(a) {
     document.querySelector(".pictures-img").src = `img/canard-jaune-${a}-l.png`
@@ -40,10 +40,10 @@ function manageThumbs() {
 manageThumbs()
 //Cart function
 const addBtn = document.getElementById("add-cta")
-function manageAddButton() {
+function manageAddBtn() {
     addBtn.addEventListener("click", getQty)
 }
-manageAddButton()
+manageAddBtn()
 
 function getQty() {
     const qty = document.getElementById("add-qty")
@@ -56,12 +56,40 @@ function displayQty(qty) {
     } else {
         document.getElementById("cart-nb").innerText = qty
     }
-    removeAddbutton()
+    removeAddBtn()
 }
 
-function removeAddbutton() {
+function removeAddBtn() {
     addBtn.innerText = "Déja au panier"
     addBtn.classList.add("bought")
     addBtn.removeEventListener("click", getQty)
 
+}
+//accordeon function
+function manageAcrdBtn() {
+    document.querySelectorAll(".product-acrd-lnk").forEach(acrd => {
+        acrd.addEventListener("click", function (event) {
+            displayAcrdText(`${this.dataset.id}`);
+            this.classList.toggle("closed")
+        })
+        getStorageAcrdState(`${acrd.dataset.id}`,acrd)
+    })
+}
+manageAcrdBtn()
+
+function displayAcrdText(id){
+    document.getElementById(id).classList.toggle("hide")
+    setStorageAcrdState(id,document.getElementById(id).classList)
+}
+
+function setStorageAcrdState(id,state){
+    localStorage.setItem(id,state)
+}
+function getStorageAcrdState(id,acrd){
+    const a= localStorage.getItem(`${acrd.dataset.id}`)
+
+    document.getElementById(id).className=`${a}`
+    if(document.getElementById(id).classList.contains("hide")){
+        acrd.classList.add("closed")
+    }
 }
