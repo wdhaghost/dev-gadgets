@@ -93,3 +93,43 @@ function getStorageAcrdState(id,acrd){
         acrd.classList.add("closed")
     }
 }
+let count = 0
+let array=[]
+getSimilarArticle()
+function manageSimilarBtn() {
+    document.querySelectorAll(".similar-lnk-handler").forEach(btn => {
+
+
+        btn.addEventListener("click", function (event) {
+            if (this.classList.contains("similar-next")) {
+                count++
+                if(count==array.length){
+                    count=0
+                }
+                changeSimilar(count)
+            }
+            if (this.classList.contains("similar-prev")) {
+                count--
+                if(count<0){
+                    count=array.length-1
+                }
+                changeSimilar(count)
+            }
+            
+        })
+    });
+}
+function getSimilarArticle() {
+    document.querySelectorAll(".similar-lst > .similar-itm").forEach(itm => {
+        if (!array.includes(itm)) {
+
+            array.push(itm.id);
+        }
+    });
+}
+
+function changeSimilar(i) {
+    document.getElementById(array[i]).scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' })
+}
+//getSimilarArticle()
+manageSimilarBtn()
