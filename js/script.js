@@ -95,8 +95,11 @@ function setStorageAcrdState(id,state){
 //  get the last state of the acordeon in the local storage and applied it
 function getStorageAcrdState(id,acrd){
     const a= localStorage.getItem(`${acrd.dataset.id}`)
+    if(a!=null){
+    
 
-    document.getElementById(id).className=`${a}`
+        document.getElementById(id).className=`${a}`
+    }
     if(document.getElementById(id).classList.contains("hide")){
         acrd.classList.add("closed")
     }

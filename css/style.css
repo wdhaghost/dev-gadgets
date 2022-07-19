@@ -341,12 +341,8 @@ body {
 }
 .similar-lst {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 100vw);
     overflow: hidden;
-}
-.similar-itm{
-    width: 100vw;
-    
 }
 
 
